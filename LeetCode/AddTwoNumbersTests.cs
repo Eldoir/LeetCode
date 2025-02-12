@@ -17,25 +17,26 @@ public class AddTwoNumbersTests
     {
         ListNode root = new();
         ListNode current = root;
-        bool extra = false;
+        int carry = 0;
         while (true)
         {
-            int sum = (l1?.val ?? 0) + (l2?.val ?? 0) + (extra ? 1 : 0);
-            extra = sum >= 10;
+            int sum = (l1?.val ?? 0) + (l2?.val ?? 0) + carry;
+            carry = sum / 10;
             current.val = sum % 10;
 
             l1 = l1?.next;
             l2 = l2?.next;
             if (l1 == null && l2 == null)
+            {
+                if (carry == 1)
+                {
+                    current.next = new ListNode(1);
+                }
+
                 break;
+            }
 
             current.next = new ListNode();
-            current = current.next;
-        }
-
-        if (extra)
-        {
-            current.next = new ListNode(1);
             current = current.next;
         }
 
