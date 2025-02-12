@@ -1,4 +1,4 @@
-﻿namespace LeetCode.Tests;
+﻿namespace LeetCode;
 
 internal class TwoSumTests
 {
