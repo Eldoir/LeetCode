@@ -16,21 +16,11 @@ internal class TwoSumTests
         throw new InvalidOperationException();
     }
 
-    [Test]
-    public void Case1()
+    [TestCase(new int[] {0, 1}, new int[] {2, 7, 11, 15}, 9)]
+    [TestCase(new int[] {1, 2}, new int[] {3, 2, 4}, 6)]
+    [TestCase(new int[] {0, 1}, new int[] {3, 3}, 6)]
+    public void Cases(int[] expected, int[] nums, int target)
     {
-        CollectionAssert.AreEqual(new int[] { 0, 1 }, TwoSum([2, 7, 11, 15], 9));
-    }
-
-    [Test]
-    public void Case2()
-    {
-        CollectionAssert.AreEqual(new int[] { 1, 2 }, TwoSum([3, 2, 4], 6));
-    }
-
-    [Test]
-    public void Case3()
-    {
-        CollectionAssert.AreEqual(new int[] { 0, 1 }, TwoSum([3, 3], 6));
+        CollectionAssert.AreEqual(expected, TwoSum(nums, target));
     }
 }
